@@ -11,11 +11,11 @@ A multi-hop Retrieval-Augmented Generation (RAG) system with hybrid search, opti
 - **Evaluation**: HotpotQA-style QA and retrieval evaluation scripts under `evaluate/`.
 
 ## Directory Structure
-- `run_agent.py` ！ minimal single-run example.
-- `backend/` ！ retrievers, generators, LangGraph agent, memory, Flask server, env specs.
-- `evaluate/` ！ evaluation scripts and sample JSONL datasets.
-- `.env.example` ！ template for environment variables (copy to `.env`).
-- `LICENSE` ！ MIT License.
+- `run_agent.py` -- minimal single-run example.
+- `backend/` -- retrievers, generators, LangGraph agent, memory, Flask server, env specs.
+- `evaluate/` -- evaluation scripts and sample JSONL datasets.
+- `.env.example` -- template for environment variables (copy to `.env`).
+- `LICENSE` -- MIT License.
 
 ## Setup
 1) Install dependencies (Conda recommended)
@@ -54,14 +54,14 @@ python backend/server.py
 SQLite will initialize at `RAG_STORAGE_DIR/chat_history.db` using `backend/db_init.sql`, and RAG modules load asynchronously.
 
 ## API Overview (Flask)
-- `GET /api/health` ！ readiness and path info
-- `GET /api/chats/list?user_id=` ！ list chat sessions
-- `POST /api/chats/new` ！ create a chat session
-- `DELETE /api/chat/<chat_id>` ！ delete a session
-- `GET /api/chat/<chat_id>/messages` ！ fetch messages + thinking traces
-- `POST /api/chat/<chat_id>/messages` ！ send a message and get RAG answer
-- `GET /api/memory/pending` ！ list pending (high-risk) memories
-- `POST /api/memory/confirm` ！ confirm or reject a pending memory
+- `GET /api/health` -- readiness and path info
+- `GET /api/chats/list?user_id=` -- list chat sessions
+- `POST /api/chats/new` -- create a chat session
+- `DELETE /api/chat/<chat_id>` -- delete a session
+- `GET /api/chat/<chat_id>/messages` -- fetch messages + thinking traces
+- `POST /api/chat/<chat_id>/messages` -- send a message and get RAG answer
+- `GET /api/memory/pending` -- list pending (high-risk) memories
+- `POST /api/memory/confirm` -- confirm or reject a pending memory
 
 Example message call:
 ```bash
@@ -75,8 +75,8 @@ curl -X POST http://localhost:5000/api/chat/<chat_id>/messages \
 - Reflection runs periodically (`RAG_MEMORY_REFLECT_HOURS`) to distill stable insights; `MemoryStore.forget` prunes expired/low-importance memories.
 
 ## Evaluation
-- `evaluate/eval_hotpotqa.py` ！ multi-hop QA evaluation
-- `evaluate/eval_retrieval.py` ！ retrieval quality evaluation
+- `evaluate/eval_hotpotqa.py` -- multi-hop QA evaluation
+- `evaluate/eval_retrieval.py` -- retrieval quality evaluation
 - Sample data: `evaluate/test_predict.jsonl`, `evaluate/validation.jsonl`
 
 ## Troubleshooting
@@ -86,3 +86,4 @@ curl -X POST http://localhost:5000/api/chat/<chat_id>/messages \
 
 ## License
 Released under the MIT License (see `LICENSE`).
+
